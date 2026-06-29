@@ -136,15 +136,16 @@ export const SERVICE_TAGS = [
   "Spa Therapy",
 ];
 
+// Real Beautymanntra salon work + storefront photos provided by the brand
 export const GALLERY = [
-  "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=900&q=80",
-  "https://images.pexels.com/photos/29096366/pexels-photo-29096366.jpeg?auto=compress&cs=tinysrgb&w=900",
-  "https://images.unsplash.com/photo-1487412947147-5cebf100ffc2?w=900&q=80",
-  "https://images.pexels.com/photos/3993454/pexels-photo-3993454.jpeg?auto=compress&cs=tinysrgb&w=900",
-  "https://images.unsplash.com/photo-1633681926022-84c23e8cb2d6?w=900&q=80",
-  "https://images.pexels.com/photos/3992879/pexels-photo-3992879.jpeg?auto=compress&cs=tinysrgb&w=900",
-  "https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?w=900&q=80",
-  "https://images.pexels.com/photos/3997381/pexels-photo-3997381.jpeg?auto=compress&cs=tinysrgb&w=900",
+  "https://customer-assets.emergentagent.com/job_salon-spa-premium-1/artifacts/r2lk6ts1_unnamed6.jpg", // storefront sign
+  "https://customer-assets.emergentagent.com/job_salon-spa-premium-1/artifacts/kre764bk_unnamed.jpg",  // purple highlights curls
+  "https://customer-assets.emergentagent.com/job_salon-spa-premium-1/artifacts/5tbzhbiv_unnamed8.jpg", // hollywood waves balayage
+  "https://customer-assets.emergentagent.com/job_salon-spa-premium-1/artifacts/ko8swk8q_unnamed1.jpg", // men's haircut
+  "https://customer-assets.emergentagent.com/job_salon-spa-premium-1/artifacts/lsjtnl2r_unnamed2.jpg", // highlights portrait
+  "https://customer-assets.emergentagent.com/job_salon-spa-premium-1/artifacts/kre764bk_unnamed.jpg",
+  "https://customer-assets.emergentagent.com/job_salon-spa-premium-1/artifacts/5tbzhbiv_unnamed8.jpg",
+  "https://customer-assets.emergentagent.com/job_salon-spa-premium-1/artifacts/lsjtnl2r_unnamed2.jpg",
 ];
 
 export const PROCESS = [
