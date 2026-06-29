@@ -1,0 +1,28 @@
+{
+  "summary": "First-finish smoke test for Beautymanntra salon site. Backend: all 8 endpoints pass (root, services, slots GET/validation, bookings create/duplicate-409/invalid-time-400, slots reflects booked, newsletter idempotent). Frontend: home loads, hero rating shows '4.6 · 1,012 Google reviews', navbar Book Now visible, booking dialog opens from hero CTA, 10 time slots render, full booking submission reaches data-testid='booking-success', service card -> service dialog -> book this service preselect flow works, newsletter form submits, testimonials prev/next clickable, FAQ accordion opens. No console errors observed. Hero headline text locator returned false only due to italic span split (rendered correctly in screenshot).",
+  "tested_scope": ["frontend", "backend", "integration"],
+  "passed": [
+    "GET /api/ returns 200 with status ok",
+    "GET /api/services returns 6 categories",
+    "GET /api/slots?date=YYYY-MM-DD returns 10 ALL_SLOTS 10:00-19:00",
+    "GET /api/slots with invalid date -> 400",
+    "POST /api/bookings valid -> 200 with id, status=confirmed, created_at",
+    "POST /api/bookings duplicate slot -> 409",
+    "POST /api/bookings invalid time '25:00' -> 400",
+    "GET /api/slots after booking shows booked time and removed from available",
+    "POST /api/newsletter idempotent (same email twice -> 200)",
+    "Home page loads, hero rating visible (4.6 · 1,012)",
+    "Navbar Book Now button visible",
+    "hero-book-btn opens booking-dialog with 14-day date carousel and 10 slot grid",
+    "Booking form submission shows booking-success",
+    "service-card-hair opens service dialog; service-dialog-book opens booking-dialog (service preselected to Hair)",
+    "Newsletter form submission works",
+    "testimonial-next/prev clickable",
+    "faq-item-0 accordion clickable"
+  ],
+  "failed": [],
+  "action_items": [],
+  "success_rate": {"backend": "100%", "frontend": "100%"},
+  "retest_needed": false,
+  "full_testing_deferred": true
+}
