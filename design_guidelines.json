@@ -1,0 +1,181 @@
+{
+  "theme": "dark",
+  "archetype": "5 (Luxury)",
+  "brand": {
+    "name": "Beautymanntra Unisex Salon & Spa",
+    "phone": "0265 225 0077",
+    "location": "Vadodara, Gujarat, India",
+    "rating": "4.6/1012 reviews",
+    "vibe": "Moody, Intimate, Commanding, Heritage, Cinematic"
+  },
+  "typography": {
+    "headings": {
+      "fontFamily": "Cormorant Garamond",
+      "googleFontUrl": "https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap",
+      "weight": "400, 500, 600, 700",
+      "style": "High-contrast serif, editorial feel. Use tracking-tighter for impact."
+    },
+    "body": {
+      "fontFamily": "Outfit",
+      "googleFontUrl": "https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600&display=swap",
+      "weight": "300, 400, 500",
+      "style": "Clean, geometric sans-serif for high legibility in dark mode."
+    },
+    "hierarchy": {
+      "h1": "text-5xl sm:text-6xl md:text-7xl font-serif tracking-tighter leading-none",
+      "h2": "text-4xl sm:text-5xl font-serif tracking-tight",
+      "h3": "text-2xl sm:text-3xl font-serif",
+      "h4": "text-xl font-sans tracking-wide uppercase text-sm",
+      "body": "text-base sm:text-lg font-sans leading-relaxed text-foreground/80",
+      "caption": "text-sm font-sans text-foreground/60 tracking-widest uppercase"
+    }
+  },
+  "colors": {
+    "background": "#0c0a09",
+    "foreground": "#fafaf9",
+    "primary": "#C29F72",
+    "primary_foreground": "#0c0a09",
+    "secondary": "#1c1917",
+    "secondary_foreground": "#fafaf9",
+    "muted": "#292524",
+    "muted_foreground": "#a8a29e",
+    "accent": "#C29F72",
+    "accent_foreground": "#0c0a09",
+    "border": "#292524",
+    "input": "#292524",
+    "ring": "#C29F72"
+  },
+  "layout": {
+    "spacing": "Generous spacing. Use py-24 or py-32 for sections. Gap-8 to gap-16 for grids.",
+    "grid": "Asymmetric, editorial grids. Overlapping elements. Use Mode A: Tetris Grid for portfolio.",
+    "container": "max-w-7xl mx-auto px-6 lg:px-12",
+    "surfaces": {
+      "header": "Crystal Glass: backdrop-blur-xl bg-background/60 border-b border-white/5",
+      "cards": "Flat solid backgrounds (bg-secondary/50) with 1px delicate inner stroke (border-white/5). No heavy shadows, rely on contrast."
+    }
+  },
+  "motion": {
+    "philosophy": "Cinematic and deliberate. No fast, jarring animations. Slow reveals, parallax layers, smooth momentum scrolling.",
+    "libraries": [
+      "framer-motion",
+      "lenis",
+      "lucide-react"
+    ],
+    "patterns": {
+      "page_load": "Premium loading screen with brand mark reveal and slow fade out to hero section.",
+      "scroll": "Parallax on background images. Text lines reveal (staggered translateY and opacity) on scroll.",
+      "hover": "Magnetic buttons for CTAs. Image zoom within container for portfolio cards.",
+      "marquee": "Slow, elegant infinite marquee (react-fast-marquee) for service tags with large outline typography."
+    }
+  },
+  "sections": [
+    {
+      "name": "Loading Screen",
+      "design": "Full screen bg-background. Central minimal logo/text reveal. Elegant progress counter."
+    },
+    {
+      "name": "Hero",
+      "design": "Full-screen (100vh) image with dark gradient overlay (bg-black/40). Large cinematic H1 text centrally or asymmetrically aligned. Magnetic 'Book Appointment' button."
+    },
+    {
+      "name": "About",
+      "design": "Split layout: Large elegant typography on one side, stacked overlapping images on the other. Animated counters for stats (10+ years, 1000+ reviews)."
+    },
+    {
+      "name": "Services",
+      "design": "Minimalist layout. Interactive cards for Hair, Skin, Bridal, Spa, Nails, Makeup. Hover expands or reveals image."
+    },
+    {
+      "name": "Portfolio/Gallery",
+      "design": "Masonry grid of high-quality before/after or styled shots. Asymmetric gaps. Lightbox or hover-zoom."
+    },
+    {
+      "name": "Testimonials",
+      "design": "Carousel of reviews. Large quote marks in primary color. Mention '4.6/1012 reviews' prominently."
+    },
+    {
+      "name": "Team",
+      "design": "Grid of team portraits. Grayscale to color on hover. Name and specialty overlay."
+    },
+    {
+      "name": "Pricing/Process",
+      "design": "Clean tabular or accordion style for pricing. Scroll storytelling timeline for process."
+    },
+    {
+      "name": "Booking Form",
+      "design": "Shadcn based. Date/time slot picker, service selector. Glassmorphism container."
+    },
+    {
+      "name": "Contact & Footer",
+      "design": "Dark, massive spacing (py-32). Large brand name text (text-[10vw]). Map embed, social links."
+    }
+  ],
+  "components": {
+    "buttons": "Magnetic effect, thin borders, transparent background with primary color text, or solid primary color with dark text for primary CTA.",
+    "forms": "Shadcn Input/Select. Underline inputs (border-b only) or minimalist solid dark inputs. Focus rings in primary color.",
+    "accordions": "Minimal lines, slow smooth expansion for FAQs."
+  },
+  "media": {
+    "hero": [
+      {
+        "url": "https://images.pexels.com/photos/7195803/pexels-photo-7195803.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
+        "description": "Contemporary and sophisticated salon interior with stylish furniture and lighting.",
+        "category": "hero_background"
+      }
+    ],
+    "services": [
+      {
+        "url": "https://images.pexels.com/photos/20046793/pexels-photo-20046793.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
+        "description": "Hair Styling",
+        "category": "service_hair"
+      },
+      {
+        "url": "https://images.unsplash.com/photo-1761775247546-89950362a39b?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NjAzNDR8MHwxfHNlYXJjaHwxfHxsdXh1cnklMjBmYWNpYWwlMjBza2luY2FyZSUyMGRhcmt8ZW58MHx8fHwxNzgyMjM4MzI5fDA&ixlib=rb-4.1.0&q=85",
+        "description": "Skin & Facial",
+        "category": "service_skin"
+      },
+      {
+        "url": "https://images.unsplash.com/photo-1610047614301-13c63f00c032",
+        "description": "Bridal Makeup",
+        "category": "service_bridal"
+      },
+      {
+        "url": "https://images.pexels.com/photos/9154455/pexels-photo-9154455.jpeg",
+        "description": "Spa & Massage",
+        "category": "service_spa"
+      },
+      {
+        "url": "https://images.pexels.com/photos/34971940/pexels-photo-34971940.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
+        "description": "Nails & Art",
+        "category": "service_nails"
+      }
+    ],
+    "portfolio": [
+      {
+        "url": "https://images.unsplash.com/photo-1600685890506-593fdf55949b",
+        "description": "Bridal transformation",
+        "category": "gallery"
+      },
+      {
+        "url": "https://images.pexels.com/photos/29096366/pexels-photo-29096366.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
+        "description": "Hair styling gallery",
+        "category": "gallery"
+      }
+    ],
+    "team": [
+      {
+        "url": "https://images.unsplash.com/photo-1625850864219-585a0e8fac0e?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NjAzMjV8MHwxfHNlYXJjaHwxfHxtb2Rlcm4lMjB0ZWFtJTIwcG9ydHJhaXQlMjBzdHVkaW8lMjBkYXJrfGVufDB8fHx8MTc4MjMyMTgyOHww&ixlib=rb-4.1.0&q=85",
+        "description": "Team member portrait",
+        "category": "team"
+      },
+      {
+        "url": "https://images.unsplash.com/photo-1627924751020-c555a024b83b?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NjAzMjV8MHwxfHNlYXJjaHw0fHxtb2Rlcm4lMjB0ZWFtJTIwcG9ydHJhaXQlMjBzdHVkaW8lMjBkYXJrfGVufDB8fHx8MTc4MjMyMTgyOHww&ixlib=rb-4.1.0&q=85",
+        "description": "Team member portrait",
+        "category": "team"
+      }
+    ]
+  },
+  "testing": {
+    "attributes": "All interactive and key informational elements MUST include a data-testid attribute in kebab-case."
+  }
+}
