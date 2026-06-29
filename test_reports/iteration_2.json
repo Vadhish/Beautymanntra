@@ -1,0 +1,24 @@
+{
+  "summary": "Regression after package.json bump (date-fns ^3.6.0, react-day-picker ^9.0.0). All backend endpoints and all frontend flows pass. Zero console errors, zero react-day-picker / date-fns module errors.",
+  "tested_scope": ["backend", "frontend", "integration"],
+  "passed": [
+    "GET /api/ -> 200 {status: ok}",
+    "GET /api/slots?date=2026-01-15 -> 200 with all_slots(10), available, booked arrays",
+    "POST /api/bookings -> 200 returns id + status='confirmed'",
+    "POST /api/bookings duplicate same date+time -> 409 'already booked'",
+    "POST /api/newsletter -> 200 {ok:true}",
+    "Home loads after loader, hero shows 4.6 rating",
+    "Navbar Book Now (nav-book-btn) opens booking-dialog, date carousel works, slot selection works, booking-submit produces booking-success card with confirmed ref",
+    "Service card opens detail dialog, 'Book this service' preselects service (Hair) in booking dialog",
+    "Testimonials next/prev buttons clickable; toggle-all-reviews reveals exactly 45 review cards",
+    "FAQ accordion trigger clickable (no errors)",
+    "Footer newsletter submits and shows 'Subscribed. See you in your inbox.' toast",
+    "Zero console errors on home page; zero react-day-picker/date-fns errors after dep upgrade"
+  ],
+  "failed": [],
+  "action_items": [],
+  "success_rate": {"backend": "100%", "frontend": "100%"},
+  "retest_needed": false,
+  "full_testing_deferred": true,
+  "notes": "Booking success modal does not auto-close (requires CLOSE button); not a bug, just expected UX. Dependency upgrade is fully clean — Calendar component is dormant in the live site, no runtime impact."
+}
