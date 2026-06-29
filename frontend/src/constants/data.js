@@ -8,6 +8,9 @@ export const BRAND = {
   address:
     "GF-3, Yajman Complex, Vasna Rd, opp. Kalyan Party Plot, Sunrise Park, Ashwamegh Nagar, Saiyed Vasna, Vadodara, Gujarat 390020",
   hoursLabel: "Open · Closes 9 pm",
+  instagram: "https://www.instagram.com/beautymanntrasalon/",
+  facebook: "https://www.facebook.com/beautymanntrasalon",
+  email: "beautymanntrasalon@gmail.com",
   mapsUrl:
     "https://www.google.com/maps?q=Beautymanntra+Unisex+Salon+%26+Spa+Vadodara",
   mapEmbed:

@@ -73,7 +73,7 @@ export const Contact = ({ onBook }) => {
             <Reveal delay={0.3}>
               <div className="flex items-center gap-3 pt-2">
                 <a
-                  href="https://instagram.com"
+                  href="https://www.instagram.com/beautymanntrasalon/"
                   target="_blank"
                   rel="noreferrer"
                   className="w-10 h-10 border border-white/15 hover:border-primary hover:text-primary text-foreground/70 flex items-center justify-center transition-colors"
@@ -83,7 +83,7 @@ export const Contact = ({ onBook }) => {
                   <Instagram className="w-4 h-4" />
                 </a>
                 <a
-                  href="https://facebook.com"
+                  href="https://www.facebook.com/beautymanntrasalon"
                   target="_blank"
                   rel="noreferrer"
                   className="w-10 h-10 border border-white/15 hover:border-primary hover:text-primary text-foreground/70 flex items-center justify-center transition-colors"
