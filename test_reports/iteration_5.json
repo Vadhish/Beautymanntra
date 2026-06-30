@@ -1,0 +1,25 @@
+{
+  "summary": "Verified CORS middleware fix (allow_origin_regex='.*') on local preview backend, plus end-to-end booking, newsletter, and service-card -> booking flows via real UI. All checks pass with zero CORS errors. User must redeploy this server.py to Render before Vercel frontend will work.",
+  "tested_scope": ["backend", "frontend", "integration"],
+  "passed": [
+    "OPTIONS /api/slots preflight returns 204 with access-control-allow-* headers (edge proxy on preview infra serves CORS; FastAPI fix is what matters for Render)",
+    "GET /api/ -> 200",
+    "GET /api/slots?date=2026-12-25 -> 200, returns 10 all_slots + available + booked",
+    "POST /api/bookings -> 200 confirmed booking with id/uuid + created_at",
+    "POST /api/bookings duplicate slot -> 409 (conflict logic works)",
+    "POST /api/newsletter -> {ok:true, message:'Subscribed'} (idempotent upsert)",
+    "UI: nav-book-btn opens booking-dialog; 10 booking-slot-* buttons render; booked slots (10:00, 11:00) correctly greyed/disabled",
+    "UI E2E: filled name+phone, picked slot 11:00, submitted -> booking-success card appeared",
+    "UI: newsletter-email + newsletter-submit produced visible success indicator in DOM",
+    "UI: service-card-* -> service-dialog -> service-dialog-book opens booking-dialog with service preselected ('Hair')",
+    "ZERO CORS errors / pageerrors in browser console across full flow"
+  ],
+  "failed": [],
+  "action_items": [
+    "User must redeploy /app/backend/server.py to Render so the Vercel frontend (https://beautymanntra.onrender.com origin) gets the corrected CORS middleware.",
+    "After Render redeploy, switch REACT_APP_BACKEND_URL back to the Render URL in Vercel env before production deploy."
+  ],
+  "success_rate": {"backend": "100%", "frontend": "100%"},
+  "retest_needed": false,
+  "full_testing_deferred": true
+}
