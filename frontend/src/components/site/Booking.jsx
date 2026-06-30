@@ -7,13 +7,6 @@ import { SERVICES } from "@/constants/data";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from "@/components/ui/select";
 
 const fmtDate = (d) => {
   const y = d.getFullYear();
@@ -324,24 +317,20 @@ export const Booking = ({ open, onClose, preselectedService }) => {
                     <Label className="text-[10px] tracking-[0.3em] uppercase text-foreground/60 mb-2 block">
                       Service
                     </Label>
-                    <Select
+                    <select
                       value={form.service}
-                      onValueChange={(v) => setForm({ ...form, service: v })}
+                      onChange={(e) =>
+                        setForm({ ...form, service: e.target.value })
+                      }
+                      data-testid="booking-service"
+                      className="w-full h-10 bg-background border border-white/10 px-3 text-sm text-foreground focus:outline-none focus:ring-2 focus:ring-primary appearance-none"
                     >
-                      <SelectTrigger
-                        className="bg-background border-white/10 focus:ring-primary"
-                        data-testid="booking-service"
-                      >
-                        <SelectValue placeholder="Select service" />
-                      </SelectTrigger>
-                      <SelectContent className="bg-secondary border-white/10">
-                        {SERVICES.map((s) => (
-                          <SelectItem key={s.key} value={s.title}>
-                            {s.title}
-                          </SelectItem>
-                        ))}
-                      </SelectContent>
-                    </Select>
+                      {SERVICES.map((s) => (
+                        <option key={s.key} value={s.title} className="bg-secondary text-foreground">
+                          {s.title}
+                        </option>
+                      ))}
+                    </select>
                   </div>
                   <div className="sm:col-span-2">
                     <Label className="text-[10px] tracking-[0.3em] uppercase text-foreground/60 mb-2 block">

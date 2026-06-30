@@ -1,0 +1,27 @@
+{
+  "summary": "Targeted re-test of the 'Book an Appointment -> black screen' fix. Booking flow now works end-to-end with native <select>, no console errors, body scroll lock/unlock works, ErrorBoundary wraps routes in App.js. Primary bug fix verified.",
+  "tested_scope": ["frontend", "backend", "integration"],
+  "passed": [
+    "GET /api/slots?date=... -> 200 with 10 slots",
+    "GET /api/services -> 200",
+    "Home loads, nav-book-btn visible after loader",
+    "Clicking nav-book-btn opens booking-dialog (NO black screen, nav still in DOM behind overlay)",
+    "document.body.style.overflow = 'hidden' while modal open; reset to '' after close",
+    "Native <select data-testid=booking-service> renders all 6 services and is changeable (selected 'Bridal')",
+    "14 date cards rendered (booking-date-*)",
+    "10 slot cards rendered (booking-slot-*) after GET /api/slots",
+    "POST /api/bookings success -> booking-success card + 'Booking confirmed' toast",
+    "booking-close-confirmed closes dialog, dialog removed from DOM",
+    "window.scrollY changes (557) after scroll => scroll fully restored post-close",
+    "hero-book-btn also opens booking-dialog correctly",
+    "ErrorBoundary component present at /app/frontend/src/components/site/ErrorBoundary.jsx with data-testid='error-boundary' and 'error-boundary-reload', imported and wrapping <BrowserRouter> in App.js",
+    "REACT_APP_BACKEND_URL falls back to '' (same-origin) in /app/frontend/src/lib/api.js",
+    "ZERO console / pageerror events during full booking journey"
+  ],
+  "failed": [],
+  "action_items": [],
+  "success_rate": {"backend": "100%", "frontend": "100%"},
+  "retest_needed": false,
+  "full_testing_deferred": true,
+  "notes": "Minor observation (not a bug): success card text appears CSS-uppercased so a substring check for 'Jane' returned false, but the booking-success element rendered and 'Booking confirmed' toast appeared - submission verified. contact-book-btn was not explicitly clicked but uses the same component path as nav/hero buttons which both work."
+}
