@@ -1,0 +1,42 @@
+{
+  "summary": "Backend on Render (direct curl) works for all 5 checks. Frontend is correctly pointed at https://beautymanntra.onrender.com (NOT localhost, NOT preview). BUT the Render backend's CORS allow-list rejects the Emergent preview origin, so every browser API call from the preview UI is blocked. End-to-end booking + newsletter flows are broken in the actual browser.",
+  "tested_scope": ["backend", "frontend", "integration"],
+  "passed": [
+    "GET https://beautymanntra.onrender.com/api/ -> 200 {status:ok}",
+    "GET /api/slots?date=2026-03-20 -> 200, 10 slots, all_slots/available/booked present",
+    "POST /api/bookings valid -> 200, status=confirmed, uuid id (fa590ce0-...)",
+    "POST /api/bookings duplicate same date+time -> 409 'This time slot is already booked'",
+    "POST /api/newsletter valid email -> 200 {ok:true}",
+    "Frontend loads on preview URL, hero+booking dialog render, nav-book-btn opens booking-dialog",
+    "Browser axios baseURL correctly resolves to https://beautymanntra.onrender.com/api (0 calls to preview /api, 0 calls to localhost)"
+  ],
+  "failed": [
+    {
+      "area": "CORS / backend config on Render",
+      "issue": "Render backend rejects the Emergent preview origin. Browser console: \"Access to XMLHttpRequest at 'https://beautymanntra.onrender.com/api/slots?date=2026-06-30' from origin 'https://salon-spa-premium-1.preview.emergentagent.com' has been blocked by CORS policy: No 'Access-Control-Allow-Origin' header is present on the requested resource.\" Confirmed via curl preflight: OPTIONS returns HTTP 400 body 'Disallowed CORS origin'.",
+      "evidence": "curl -X OPTIONS .../api/slots -H 'Origin: https://salon-spa-premium-1.preview.emergentagent.com' -> HTTP/2 400 'Disallowed CORS origin'. Browser network: only 1 request to Render (slots) and it net::ERR_FAILED.",
+      "priority": "HIGH"
+    },
+    {
+      "area": "Booking UI flow",
+      "issue": "Slot grid never populates (slots fetch CORS-blocked), so user cannot select a time. Booking submission therefore cannot be exercised end-to-end in the browser. Backend itself is fine via curl.",
+      "evidence": "Screenshot shows 'PICK A TIME SLOT' section empty under the date carousel; 0 slot buttons rendered.",
+      "priority": "HIGH"
+    },
+    {
+      "area": "Newsletter UI flow",
+      "issue": "Not reachable in the same session because booking dialog blocked progress, but same CORS policy will block POST /api/newsletter from the preview origin (preflight will return 'Disallowed CORS origin').",
+      "evidence": "Same CORS rejection applies to any /api/* request from the preview origin.",
+      "priority": "HIGH"
+    }
+  ],
+  "action_items": [
+    "On the Render deployment (FastAPI), update CORSMiddleware allow_origins to include the Emergent preview domain. Either set allow_origins=['*'] (simplest, since no cookies required), or explicitly add 'https://salon-spa-premium-1.preview.emergentagent.com' (and any future Vercel/prod domain). Also ensure allow_methods=['*'] and allow_headers=['*'].",
+    "After redeploying Render, re-run preflight: curl -X OPTIONS https://beautymanntra.onrender.com/api/slots?date=2026-03-20 -H 'Origin: https://salon-spa-premium-1.preview.emergentagent.com' -H 'Access-Control-Request-Method: GET' -> must return 200 with 'access-control-allow-origin' header echoing the origin (or *).",
+    "Then retest UI: booking flow (slots load -> select -> submit -> booking-success) and footer newsletter (success toast)."
+  ],
+  "success_rate": {"backend": "100%", "frontend": "30%"},
+  "retest_needed": true,
+  "full_testing_deferred": true,
+  "notes": "Only ONE Render API request was attempted by the browser before CORS blocked it. Render did NOT cold-start slowly (<2s). The /app/frontend/.env change is correct and effective. The blocker is purely the CORS allow-list on the Render-hosted FastAPI app, which the main agent cannot fix from this workspace alone unless they have access to the Render deployment / backend repo."
+}
